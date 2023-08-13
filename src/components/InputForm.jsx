@@ -1,32 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import '../styles/InputForm.css';
+import { CountryListContext } from '../context/CountryListContext';
+import { CountryContext } from '../context/CountryContext';
 
 function InputForm() {
-    let [countries, setCoutries] = useState([]);
+    const { countries } = useContext(CountryListContext);
+    const { selectedCountry, setSelectedcountry } = useContext(CountryContext);
 
-    useEffect(() => {
-        const getCountries = async () => {
-            let result = await fetch('https://restcountries.com/v2/all').then(res => {
-                return res.json();
-            }).then(response => {
-                return response;
-            });
-            setCoutries(result);
-        }
-
-        getCountries();
-    },);
+    const handleCountrySelection = (e) => {
+        setSelectedcountry(e.target.value);
+    }
 
     return (
         <div className='form-container'>
             <form action="" className="country-selection-form">
                 <label htmlFor="country">Select a country you want to get details of:</label>
 
-                <select name="" id="country">
+                <select 
+                    name="selectedCountry" 
+                    value={selectedCountry} 
+                    onChange={handleCountrySelection} 
+                    id="country"
+                >
                     <option value="">Select Country</option>
-                    {/* <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option> */}
 
                     {countries?.map(country => {
                         return (
