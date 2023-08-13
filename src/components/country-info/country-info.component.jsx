@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { CountryContext } from '../context/CountryContext';
+import './country-info.styles.scss';
+import { CountryContext } from '../../constants';
 
-function Country() {
+function CountryInfo() {
     const { countryDetails } = useContext(CountryContext);
 
     const [country, setCountry] = useState();
@@ -11,7 +12,7 @@ function Country() {
     }, [countryDetails]);
 
     return (
-        country && <div className="country-details">
+        country && <div className="country-info">
             <h1>Country Name: {country?.name}</h1>
 
             <img src={country?.flags.png} alt={country?.name} />
@@ -22,9 +23,9 @@ function Country() {
 
             <h1>Time Zone: {country?.timezones[0]}</h1>
 
-            <h1>Population: {country?.population}</h1>
+            <h1>Population: {country?.population.toLocaleString()}</h1>
         </div>
     );
 }
 
-export default Country;
+export default CountryInfo;

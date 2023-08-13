@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import '../styles/InputForm.css';
-import { CountryListContext } from '../context/CountryListContext';
-import { CountryContext } from '../context/CountryContext';
+import './input-form.styles.scss';
+import { CountryListContext, CountryContext } from '../../constants';
 
 function InputForm() {
     const { countries } = useContext(CountryListContext);

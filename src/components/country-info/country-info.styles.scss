@@ -1,0 +1,15 @@
+.country-info {
+    padding: 0 20rem;
+
+    & h1 {
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: var(--white);
+        margin-bottom: 1rem;
+    }
+
+    & img {
+        max-height: 13rem;
+        margin-bottom: 1rem;
+    }
+}
